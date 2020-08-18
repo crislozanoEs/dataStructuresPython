@@ -1,3 +1,4 @@
+from arrays.arrayUtilities import arrayUtilities
 from tree.node import Node
 from tree.nTree import nTree
 
@@ -13,7 +14,7 @@ def search_BFS(initial_state, solution):
         visited_nodes.append(node)
         if node.get_data() == solution:
             solved = True
-            print("Node to return "+str(node))
+            print("Node to return " + str(node))
             return node
         else:
             data_node = node.get_data()
@@ -55,6 +56,7 @@ def initTree():
     tree.setRoot_node(node1)
     return tree
 
+
 def callingBFS_search():
     print("Init program")
     initial_state = [4, 3, 2, 1]
@@ -69,6 +71,7 @@ def callingBFS_search():
     result.append(initial_state)
     result.reverse()
     print(result)
+
 
 if __name__ == '__main__':
     tree = initTree()
@@ -86,3 +89,23 @@ if __name__ == '__main__':
     result_KDF = tree.init_travel_KDF()
     for r in result_KDF:
         print(str(r.get_data()))
+
+    print("-----Arrays-----")
+    array = [2, 1, -7, 4, 5]
+    arrayUtility = arrayUtilities(array, 5)
+
+    arrayUtility.rotate_array(10, False)
+    print("Rotated")
+    for element in arrayUtility.array:
+        print(str(element))
+
+    arrayUtility.init_quick_sort()
+    print("Sorted")
+    for element in arrayUtility.array:
+        print(str(element))
+
+    result = arrayUtility.search_max()
+    print("The max element is " + str(result))
+
+    result = arrayUtility.search_min()
+    print("The min element is " + str(result))
