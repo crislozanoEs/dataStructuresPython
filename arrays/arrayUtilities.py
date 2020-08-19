@@ -79,3 +79,18 @@ class arrayUtilities:
             if min_element > element:
                 min_element = element
         return min_element
+
+    def init_binary_search(self, element=0):
+        return self.binary_search(0, len(self.array) - 1, element)
+
+    def binary_search(self, l=0, r=0, element=0):
+        middle =int((r + l) / 2)
+        pivot = self.array[middle]
+        if pivot == element:
+            return middle
+        if r == l:
+            return -1
+        if pivot > element:
+            return self.binary_search(l, middle, element)
+        else:
+            return self.binary_search(middle+1, r, element)

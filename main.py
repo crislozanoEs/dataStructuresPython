@@ -109,3 +109,7 @@ if __name__ == '__main__':
 
     result = arrayUtility.search_min()
     print("The min element is " + str(result))
+
+    looking_for_element = 80
+    position_result = arrayUtility.init_binary_search(looking_for_element)
+    print("Find the " + str(looking_for_element) + " in the position " + str(position_result))
