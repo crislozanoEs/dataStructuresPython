@@ -115,6 +115,7 @@ if __name__ == '__main__':
     position_result = arrayUtility.init_binary_search(looking_for_element)
     print("Find the " + str(looking_for_element) + " in the position " + str(position_result))
 
+    print("-----Stack-----")
     stack = Stack()
     stack.push("2")
     stack.push("3")

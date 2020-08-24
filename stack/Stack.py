@@ -21,6 +21,7 @@ class Stack:
         to_return = self.top
         new_top = to_return.get_next()
         self.top = new_top
+        to_return.set_next(None)
         return to_return
 
     def peak(self):
