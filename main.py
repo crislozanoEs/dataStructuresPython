@@ -1,6 +1,7 @@
-from arrays.arrayUtilities import arrayUtilities
+from arrays.ArrayUtilities import ArrayUtilities
+from stack.Stack import Stack
 from tree.node import Node
-from tree.nTree import nTree
+from tree.NTree import NTree
 
 
 def search_BFS(initial_state, solution):
@@ -52,7 +53,7 @@ def initTree():
     node22.set_children([node2231, node2232, node2233])
     node1 = Node(1)
     node1.set_children([node21, node22])
-    tree = nTree(node1)
+    tree = NTree(node1)
     tree.setRoot_node(node1)
     return tree
 
@@ -75,31 +76,31 @@ def callingBFS_search():
 
 if __name__ == '__main__':
     tree = initTree()
-    result_BFS = tree.travel_BFS()
-    print("BFS traveler")
+    result_BFS = tree.traversal_preorder()
+    print("Preorder traveler")
     for r in result_BFS:
         print(str(r.get_data()))
 
     print("Inorder traveler")
-    result_inorder = tree.init_travel_inorder()
+    result_inorder = tree.init_traversal_inorder()
     for r in result_inorder:
         print(str(r.get_data()))
 
-    print("KDF traveler")
-    result_KDF = tree.init_travel_KDF()
+    print("Postorder traveler")
+    result_KDF = tree.init_traversal_post_order()
     for r in result_KDF:
         print(str(r.get_data()))
 
     print("-----Arrays-----")
     array = [2, 1, -7, 4, 5]
-    arrayUtility = arrayUtilities(array, 5)
+    arrayUtility = ArrayUtilities(array, 5)
 
     arrayUtility.rotate_array(10, False)
     print("Rotated")
     for element in arrayUtility.array:
         print(str(element))
 
-    arrayUtility.init_quick_sort()
+    arrayUtility.init_quick_sort(False)
     print("Sorted")
     for element in arrayUtility.array:
         print(str(element))
@@ -113,3 +114,12 @@ if __name__ == '__main__':
     looking_for_element = 80
     position_result = arrayUtility.init_binary_search(looking_for_element)
     print("Find the " + str(looking_for_element) + " in the position " + str(position_result))
+
+    stack = Stack()
+    stack.push("2")
+    stack.push("3")
+    stack.push("1")
+    print("TOP STACK " + str(stack.peak()))
+
+    stack.reverse()
+    print("TOP STACK " + str(stack.peak()))

@@ -1,7 +1,7 @@
 from tree.node import Node
 
 
-class nTree:
+class NTree:
 
     def __init__(self, root_node=Node):
         self.root_node = root_node
@@ -10,7 +10,7 @@ class nTree:
         self.root_node = root_node
         self.root_node.set_parent(None)
 
-    def travel_BFS(self):
+    def traversal_preorder(self):
         visited_nodes = []
         edge_nodes = [self.root_node]
         while len(edge_nodes) != 0:
@@ -22,37 +22,40 @@ class nTree:
                         edge_nodes.append(son_node)
         return visited_nodes
 
-    def travel_inorder(self, node=Node, visited_nodes=[]):
+    def traversal_inorder(self, node=Node, visited_nodes=[]):
         if node is None:
             return
         if node.get_children() is not None:
             tam = len(node.get_children())
+            if tam == 1:
+                self.traversal_inorder(node.get_children()[0], visited_nodes)
             for pos in range(0, tam - 1):
-                self.travel_inorder(node.get_children()[pos],visited_nodes)
+                self.traversal_inorder(node.get_children()[pos], visited_nodes)
             visited_nodes.append(node)
-            self.travel_inorder(node.get_children()[tam - 1],visited_nodes)
+            if tam > 1:
+                self.traversal_inorder(node.get_children()[tam - 1], visited_nodes)
         else:
             visited_nodes.append(node)
 
-    def init_travel_inorder(self):
+    def init_traversal_inorder(self):
         result = []
-        self.travel_inorder(self.root_node, result)
+        self.traversal_inorder(self.root_node, result)
         return result
 
-    def travel_KDF(self, node=Node, visited_nodes=[]):
+    def traversal_postorder(self, node=Node, visited_nodes=[]):
         if node is None:
             return
         if node.get_children() is not None:
             tam = len(node.get_children())
             for pos in range(0, tam):
-                self.travel_KDF(node.get_children()[pos],visited_nodes)
+                self.traversal_postorder(node.get_children()[pos],visited_nodes)
             visited_nodes.append(node)
         else:
             visited_nodes.append(node)
 
-    def init_travel_KDF(self):
+    def init_traversal_post_order(self):
         result = []
-        self.travel_KDF(self.root_node, result)
+        self.traversal_postorder(self.root_node, result)
         return result
 
 

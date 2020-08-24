@@ -1,4 +1,4 @@
-class arrayUtilities:
+class ArrayUtilities:
     def __init__(self, array=[], tam=0):
         self.array = array
         self.tam = tam
@@ -47,12 +47,16 @@ class arrayUtilities:
                 element_to_replace = temp
                 pos = new_pos
 
-    def init_quick_sort(self):
+    # Sort the array, Incremental mode-> True, Decremental mode ->False
+    def init_quick_sort(self, mode=True):
         previous_array = self.array
-        self.quick_sort(0, len(self.array) - 1)
+        if mode:
+            self.quick_sort_in(0, len(self.array) - 1)
+        else:
+            self.quick_sort_de(0, len(self.array) - 1)
         return previous_array
 
-    def quick_sort(self, l=0, r=0):
+    def quick_sort_in(self, l=0, r=0):
         if l >= r:
             return
         pivot = self.array[r]
@@ -63,8 +67,22 @@ class arrayUtilities:
                 self.array[cnt] = self.array[i]
                 self.array[i] = temp
                 cnt = cnt + 1
-        self.quick_sort(l, cnt - 2)
-        self.quick_sort(cnt, r)
+        self.quick_sort_in(l, cnt - 2)
+        self.quick_sort_in(cnt, r)
+
+    def quick_sort_de(self, l=0, r=0):
+        if l >= r:
+            return
+        pivot = self.array[r]
+        cnt = l
+        for i in range(l, r + 1):
+            if self.array[i] >= pivot:
+                temp = self.array[cnt]
+                self.array[cnt] = self.array[i]
+                self.array[i] = temp
+                cnt = cnt + 1
+        self.quick_sort_de(l, cnt - 2)
+        self.quick_sort_de(cnt, r)
 
     def search_max(self):
         max_element = self.array[0]
@@ -94,3 +112,9 @@ class arrayUtilities:
             return self.binary_search(l, middle, element)
         else:
             return self.binary_search(middle+1, r, element)
+
+    def straight_forward_search(self, element = 0):
+        for item in range(0,len(self.array)):
+            if self.array[item] == element:
+                return item
+        return -1
