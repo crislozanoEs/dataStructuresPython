@@ -6,6 +6,8 @@ class Stack:
         self.top = None
 
     def peak(self):
+        if self.top is None:
+            return None
         return self.top.get_data()
 
     def push(self, data):
@@ -18,14 +20,13 @@ class Stack:
             self.top = new_node
 
     def pop(self):
+        if self.top is None:
+            return None
         to_return = self.top
         new_top = to_return.get_next()
         self.top = new_top
         to_return.set_next(None)
         return to_return
-
-    def peak(self):
-        return self.top.get_data()
 
     def reverse(self):
         new_stack = Stack()

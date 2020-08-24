@@ -2,6 +2,7 @@ from arrays.ArrayUtilities import ArrayUtilities
 from stack.Stack import Stack
 from tree.node import Node
 from tree.NTree import NTree
+from queues.NormalQueue import NormalQueue
 
 
 def search_BFS(initial_state, solution):
@@ -124,3 +125,18 @@ if __name__ == '__main__':
 
     stack.reverse()
     print("TOP STACK " + str(stack.peak()))
+
+    print("-----Normal Queue-----")
+    queue = NormalQueue()
+    queue.push("1")
+    print("FRONT LINE" +str(queue.peak_first()))
+    print("BACK LINE" +str(queue.peak_back()))
+    queue.push("2")
+    print("FRONT LINE" + str(queue.peak_first()))
+    print("BACK LINE" + str(queue.peak_back()))
+    queue.push("3")
+    print("FRONT LINE" + str(queue.peak_first()))
+    print("BACK LINE" + str(queue.peak_back()))
+
+    print("SIZE "+str(queue.size()))
+
