@@ -2,7 +2,7 @@ from queues.NQueueNode import NQueueNode
 
 
 class NormalQueue:
-    def __init__(self, top=NQueueNode):
+    def __init__(self):
         self.front = None
         self.back = None
 
@@ -44,3 +44,8 @@ class NormalQueue:
         if self.front is None:
             self.back = None
         return to_return
+
+    def is_empty(self):
+        if self.front is None:
+            return True
+        return False

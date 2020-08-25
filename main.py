@@ -1,4 +1,5 @@
 from arrays.ArrayUtilities import ArrayUtilities
+from queues.CircularQueue import CircularQueue
 from stack.Stack import Stack
 from tree.node import Node
 from tree.NTree import NTree
@@ -140,3 +141,21 @@ if __name__ == '__main__':
 
     print("SIZE "+str(queue.size()))
 
+    print("-----Circular Queue-----")
+    cqueue = CircularQueue()
+    cqueue.push("1")
+    print("FRONT LINE" + str(cqueue.peak_first()))
+    print("BACK LINE" + str(cqueue.peak_last()))
+    cqueue.push("2")
+    print("FRONT LINE" + str(cqueue.peak_first()))
+    print("BACK LINE" + str(cqueue.peak_last()))
+    cqueue.push("3")
+    print("FRONT LINE" + str(cqueue.peak_first()))
+    print("BACK LINE" + str(cqueue.peak_last()))
+
+    times = 1
+    print("Printing "+str(times)+" time backward")
+    cqueue.print_backward(times)
+    times = 2
+    print("Printing " + str(times) + " time forward")
+    cqueue.print_forward(times)
