@@ -37,3 +37,6 @@ class Stack:
             self.top = new_top
         self.top = new_stack.top
         new_stack = None
+
+def correr():
+    print('a')
